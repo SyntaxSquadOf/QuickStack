@@ -10,6 +10,14 @@
     "sourceMap": true,
     "esModuleInterop": true, // permite importar modulos de commonjs en ESmacript sin problemas
     "declaration": true, // crea un archivo de definicion de tipos
+    "forceConsistentCasingInFileNames": true, // fuerza el uso de mayusculas y minusculas en los nombres de los archivos
+    "removeComments": false, // no elimina los comentarios del codigo
+    //? recomendado para desarrollo, pero en produccion pasaria a un TRUE
+    // configuracion para rutas absolutas
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"] // permite usar rutas absolutas en el proyecto
+    },
     // las siguientes extensiones son para que se puedan usar los decoradores
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
