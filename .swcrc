@@ -5,23 +5,20 @@
       "syntax": "typescript",
       "tsx": false,
       "dynamicImport": true,
-      "decorators": false
+      "decorators": true
     },
-    "transform": null,
-    "target": "es2022",
-    "loose": false,
-    "externalHelpers": false,
-    "keepClassNames": false
+    "transform": {
+      "legacyDecorator": true,
+      "decoratorMetadata": true
+    },
+    "target": "es2022"
   },
   "module": {
-    "type": "commonjs",
-    "strict": false,
-    "strictMode": false,
-    "noInterop": false,
-    "lazy": false
+    "type": "commonjs"
   },
-  "minify": true
+  "minify": false
 }
+
 // por si necesitas utilizar TypeOrm, decoradores, etc.
 // {
 //   "$schema": "https://json.schemastore.org/swcrc",
