@@ -1,7 +1,7 @@
-import colors from "colors";
 import app from "./server";
 import { PORT } from "./config/Process";
+import { InfoLogger } from "./utils/logger";
 
 app.listen(PORT, () => {
-  console.log(colors.blue.bold(`Server running on port ${PORT}`));
+  InfoLogger(`Server running on port ${PORT}`);
 });
