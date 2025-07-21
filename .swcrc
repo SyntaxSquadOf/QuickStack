@@ -11,10 +11,17 @@
       "legacyDecorator": true,
       "decoratorMetadata": true
     },
-    "target": "esnext"
+    "target": "esnext",
+    "loose": false,
+    "externalHelpers": false,
+    "keepClassNames": false
   },
   "module": {
-    "type": "commonjs"
+    "type": "es6",
+    "strict": false,
+    "strictMode": false,
+    "noInterop": false,
+    "lazy": false
   },
   "minify": false
 }
