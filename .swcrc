@@ -33,7 +33,7 @@
   },
   "module": {
     // Cambia a la version de módulo que necesites, como "commonjs" o "es6"
-    "type": "commonjs",
+    "type": "es6",
     // Cambia a true si quieres que el módulo sea estricto
     // (esto puede afectar la interoperabilidad con otros módulos).
     "strict": false,

@@ -20,6 +20,10 @@
     "experimentalDecorators": true, // habilita el uso de decoradores
     "emitDecoratorMetadata": true // emite metadatos de decoradores, necesario para TypeORM y otros frameworks que usan decoradores
   },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
   "include": ["src/**/*.ts"], // incluye todos los archivos .ts en la carpeta src que se compilarán
   "exclude": ["node_modules", "src/**/*.test.ts"] // excluye la carpeta node_modules y los archivos de prueba que no se deben compilar
 }
