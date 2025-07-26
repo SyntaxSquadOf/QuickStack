@@ -1,7 +1,9 @@
 import express, { Express } from "express";
-import { RateLimit } from "./utils/rateLimit";
 import helmet from "helmet";
 import morgan from "morgan";
+import cors from "cors";
+import { corsOptions } from "./config/Cors";
+import { RateLimit } from "./utils/rateLimit";
 
 const app: Express = express();
 
@@ -9,6 +11,7 @@ app.use(express.json()); // Middleware para parsear el cuerpo de las solicitudes
 app.use(RateLimit); // Middleware para limitar la tasa de solicitudes
 app.use(helmet()); // Middleware para mejorar la seguridad de la aplicación
 app.use(morgan("dev")); // Middleware para registrar las solicitudes HTTP
+app.use(cors(corsOptions)); // Middleware para manejar CORS con opciones personalizadas
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
