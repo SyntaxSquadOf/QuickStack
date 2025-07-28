@@ -2,8 +2,10 @@ import express, { Express } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
+import swaggerUi from "swagger-ui-express";
 import { corsOptions } from "./config/Cors";
 import { RateLimit } from "./utils/rateLimit";
+import swaggerSpec, { swaggerUIOptions } from "./config/Swagger";
 
 const app: Express = express();
 
@@ -20,5 +22,12 @@ app.get("/", (req, res) => {
 app.get("/api", (req, res) => {
   res.json({ message: "API con express y typescript" });
 });
+
+// Ruta para la documentación de la API usando Swagger
+app.use(
+  "/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, swaggerUIOptions),
+);
 
 export default app;
