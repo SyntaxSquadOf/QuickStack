@@ -9,8 +9,10 @@ export const corsOptions: CorsOptions = {
   origin: function (origin, callback) {
     // permitir desde varios origenes, origin es el origen de la peticion, y callback es una funcion que se ejecuta para validar si se acepta o no la peticion
     // si desearamos realizar las peticiones desde postman, thunder client, insomnia, etc, se debera de hacer una lista de los origenes permitidos llamada whitelist y se debera de validar si el origen de la peticion esta en la lista de los origenes permitidos
-    const whitelist = [FRONTEND_URL];
+    const whitelist: (string | undefined)[] = [FRONTEND_URL];
     if (process.argv[2] === "--api") {
+      // si se ejecuta el servidor con el comando "npm run dev:api" se permite el origen undefined, es decir, se permite peticiones desde postman, thunder client, insomnia, etc
+      // esto es util para pruebas y desarrollo, pero no se recomienda en produccion,
       whitelist.push(undefined);
     }
     if (whitelist.includes(origin)) {

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import colors from "colors";
 
 export const logger = (msg: string) =>
