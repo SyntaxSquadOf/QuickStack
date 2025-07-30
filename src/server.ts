@@ -3,9 +3,9 @@ import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
-import { corsOptions } from "./config/Cors";
-import { RateLimit } from "./utils/rateLimit";
-import swaggerSpec, { swaggerUIOptions } from "./config/Swagger";
+import { corsOptions } from "@/config/Cors";
+import { RateLimit } from "@/utils/rateLimit";
+import swaggerSpec, { swaggerUIOptions } from "@/config/Swagger";
 
 const app: Express = express();
 

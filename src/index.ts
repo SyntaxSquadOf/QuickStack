@@ -3,5 +3,5 @@ import { PORT } from "./config/Process";
 import { InfoLogger } from "./utils/logger";
 
 app.listen(PORT, () => {
-  InfoLogger(`Server running on port ${PORT}`);
+  InfoLogger(`Server running on port http://localhost:${PORT}`);
 });

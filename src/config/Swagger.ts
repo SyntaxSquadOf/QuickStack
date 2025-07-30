@@ -49,13 +49,13 @@ const swaggerSpec = swaggerJSDoc(options);
 export const swaggerUIOptions: SwaggerUiOptions = {
   // el customCss permite personalizar el estilo de la interfaz de Swagger UI
   // en este caso se cambia el logo de la parte superior izquierda, se puede usar cualquier URL de imagen
-  customCss: `
-    .topbar-wrapper .link {
-      content: url('https://cdn-icons-png.flaticon.com/512/2982/2982808.png');
-      height: 80px;
-      width: 80px;
-    }
-  `,
+  // customCss: `
+  //   .topbar-wrapper .link {
+  //     content: url('https://cdn-icons-png.flaticon.com/512/1190/1190975.png');
+  //     height: 80px;
+  //     width: 80px;
+  //   }
+  // `,
   customSiteTitle: "Documentacion REST API Express y Typescript",
 };
 
