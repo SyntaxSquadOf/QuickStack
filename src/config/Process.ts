@@ -21,6 +21,7 @@ const envSchema = z.object({
   FRONTEND_URL: z
     .url({ protocol: /^https?$/ })
     .default("http://localhost:3000"),
+  API_VERSION: z.string().default("v1"),
 });
 
 const { success, error, data } = envSchema.safeParse(process.env);
@@ -33,4 +34,4 @@ if (!success) {
   process.exit(1); // Termina el proceso si hay un error en las variables de entorno
 }
 
-export const { PORT, FRONTEND_URL } = data;
+export const { PORT, FRONTEND_URL, API_VERSION } = data;
