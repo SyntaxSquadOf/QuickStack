@@ -120,3 +120,19 @@ npm run dev
 **Con npm (equivalentes):**
 
 - `npm run dev`, `npm run dev:api`, `npm run build`, `npm start`, `npm run prepare`, `npm run lint`, `npm run format`
+
+---
+
+## Formatos aceptados por commitlint
+
+Estos son los formatos de commit aceptados por la configuración de commitlint en este proyecto:
+
+- `feat(archivos): mensaje commit`
+- `feat: mensaje commit`
+- `feat(archivos): mensaje commit\n\ndescripcion`
+
+```markdown
+Es decir: acepta con o sin scope, y acepta cuerpo adicional (descripcion)
+```
+
+
