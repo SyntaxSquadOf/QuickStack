@@ -36,12 +36,32 @@ app.use(
   swaggerUi.setup(swaggerSpec, swaggerUIOptions),
 );
 
-app.use((req, res) => {
-  res.status(404).json({ success: false, message: "Route not found" });
+// Manejo de errores
+app.use((error, req, res, next) => {
+  console.error(error.stack);
+  res.status(500).json({
+    mensaje: "Algo salió mal en el servidor",
+    success: false,
+    error: error.message,
+  });
+  WarningLogger(`El Servidor ha tenido un fallo`, {
+    method: req.method,
+    url: req.url,
+  });
+});
+
+// Middleware para rutas no encontradas
+app.use((error, req, res, next) => {
+  res.status(404).json({
+    mensaje: "No se encontró la ruta solicitada",
+    success: false,
+    error: error.message,
+  });
   WarningLogger(`Ruta no encontrada: `, {
     method: req.method,
     url: req.url,
   });
 });
+
 
 export default app;
