@@ -1,4 +1,4 @@
-import express, { Express } from "express";
+import express, { Express, Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
@@ -36,8 +36,20 @@ app.use(
   swaggerUi.setup(swaggerSpec, swaggerUIOptions),
 );
 
+// Middleware para rutas no encontradas
+app.use((req: Request, res: Response) => {
+  res.status(404).json({
+    mensaje: "No se encontró la ruta solicitada",
+    success: false,
+  });
+  WarningLogger(`Ruta no encontrada: `, {
+    method: req.method,
+    url: req.url,
+  });
+});
+
 // Manejo de errores
-app.use((error, req, res, next) => {
+app.use((error: Error, req: Request, res: Response) => {
   console.error(error.stack);
   res.status(500).json({
     mensaje: "Algo salió mal en el servidor",
@@ -49,19 +61,5 @@ app.use((error, req, res, next) => {
     url: req.url,
   });
 });
-
-// Middleware para rutas no encontradas
-app.use((error, req, res, next) => {
-  res.status(404).json({
-    mensaje: "No se encontró la ruta solicitada",
-    success: false,
-    error: error.message,
-  });
-  WarningLogger(`Ruta no encontrada: `, {
-    method: req.method,
-    url: req.url,
-  });
-});
-
 
 export default app;
