@@ -10,7 +10,16 @@
     "prepare": "husky",
     "test": "echo \"Error: no test specified\"",
     "lint": "eslint src/**/*.ts",
-    "format": "prettier --write src/**/*.ts"
+    "format": "prettier --write src/**/*.ts",
+    "docker:build": "docker build -t quickstack .",
+    "docker:build:prod": "docker build --target production -t quickstack:prod .",
+    "docker:run": "docker run -p 5000:5000 --env-file .env quickstack",
+    "docker:run:prod": "docker run -p 5000:5000 --env-file .env quickstack:prod",
+    "docker:dev": "docker-compose up --build",
+    "docker:dev:detach": "docker-compose up --build -d",
+    "docker:stop": "docker-compose down",
+    "docker:clean": "docker-compose down -v --rmi all",
+    "docker:logs": "docker-compose logs -f quickstack-api"
   },
   "keywords": [],
   "author": "",

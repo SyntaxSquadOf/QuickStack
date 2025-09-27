@@ -123,6 +123,77 @@ npm run dev
 
 ---
 
+## 🐳 Docker
+
+### Desarrollo con Docker Compose
+
+**Comando rápido para desarrollo:**
+
+```bash
+pnpm docker:dev
+```
+
+**Servicios incluidos:**
+
+- **QuickStack API** - Tu aplicación principal con hot reload
+- **PostgreSQL** - Base de datos (opcional)
+- **Redis** - Caché y sesiones (opcional)
+- **Adminer** - Interfaz web para PostgreSQL en `http://localhost:8080`
+
+### Scripts Docker disponibles
+
+**Desarrollo:**
+
+```bash
+pnpm docker:dev          # Levantar todos los servicios con hot reload
+pnpm docker:dev:detach   # Levantar en segundo plano
+pnpm docker:stop         # Parar todos los servicios
+pnpm docker:logs         # Ver logs de la API
+```
+
+**Producción:**
+
+```bash
+pnpm docker:build        # Construir imagen de desarrollo
+pnpm docker:build:prod   # Construir imagen optimizada de producción
+pnpm docker:run          # Correr contenedor único
+pnpm docker:clean        # Limpiar contenedores y volúmenes
+```
+
+### Configuración
+
+1. **Copia las variables de entorno:**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Personaliza tu .env** según tus necesidades
+
+3. **Levanta los servicios:**
+   ```bash
+   pnpm docker:dev
+   ```
+
+### Acceso a servicios
+
+- **API:** `http://localhost:5000`
+- **Documentación:** `http://localhost:5000/docs`
+- **Adminer (DB):** `http://localhost:8080`
+- **PostgreSQL:** `localhost:5432`
+- **Redis:** `localhost:6379`
+
+### Dockerfile Multi-Stage
+
+El Dockerfile está optimizado con:
+
+- **Multi-stage build** para imágenes ligeras en producción
+- **Usuario no-root** para mayor seguridad
+- **Health checks** para monitoreo
+- **Caché de layers** para builds más rápidos
+
+---
+
 ## Formatos aceptados por commitlint
 
 Estos son los formatos de commit aceptados por la configuración de commitlint en este proyecto:
@@ -134,5 +205,3 @@ Estos son los formatos de commit aceptados por la configuración de commitlint e
 ```markdown
 Es decir: acepta con o sin scope, y acepta cuerpo adicional (descripcion)
 ```
-
-
