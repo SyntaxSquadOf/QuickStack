@@ -7,7 +7,7 @@ import { corsOptions } from "@/config/Cors";
 import { RateLimit } from "@/utils/rateLimit";
 import swaggerSpec, { swaggerUIOptions } from "@/config/Swagger";
 import { API_VERSION } from "./config/Process";
-import { WarningLogger } from "./utils/logger";
+import { InfoLogger, WarningLogger } from "./utils/logger";
 
 const app: Express = express();
 
@@ -60,6 +60,15 @@ app.use((error: Error, req: Request, res: Response) => {
     method: req.method,
     url: req.url,
   });
+});
+
+process.on("SIGINT", () => {
+  InfoLogger("🛑 SIGINT recibido, cerrando servidor...");
+  process.exit(0);
+});
+process.on("SIGTERM", () => {
+  InfoLogger("🛑 SIGTERM recibido, cerrando servidor...");
+  process.exit(0);
 });
 
 export default app;
