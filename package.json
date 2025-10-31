@@ -41,7 +41,7 @@
     "@swc/core": "^1.13.5",
     "@types/bcrypt": "^6.0.0",
     "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.4",
+    "@types/express": "^5.0.5",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.9.1",
