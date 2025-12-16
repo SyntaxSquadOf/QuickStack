@@ -14,16 +14,16 @@ const app: Express = express();
 app.use(express.json()); // Middleware para parsear el cuerpo de las solicitudes JSON
 app.use(RateLimit); // Middleware para limitar la tasa de solicitudes
 app.use(helmet()); // Middleware para mejorar la seguridad de la aplicación
-app.use(morgan("dev")); // Middleware para registrar las solicitudes HTTP
+app.use(morgan("common")); // Middleware para registrar las solicitudes HTTP
 app.use(cors(corsOptions)); // Middleware para manejar CORS con opciones personalizadas
 
 // ruta para probar
-app.get("/", cors({ origin: true }), (req, res) => {
+app.get("/", cors({ origin: true }), (req: Request, res: Response) => {
   res.send("Hello World!");
 });
 
 // Ruta de ejemplo para la API
-app.get(`/api/${API_VERSION}`, (req, res) => {
+app.get(`/api/${API_VERSION}`, (req: Request, res: Response) => {
   res.json({ message: "API con express y typescript" });
 });
 //? las rutas de la API deberían estar bajo el prefijo /api/{API_VERSION}/ -> el donde apuntan
