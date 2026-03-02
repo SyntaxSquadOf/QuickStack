@@ -12,7 +12,6 @@ updates:
       # interval: "weekly"
       # time: "00:00"
       # day: "monday"
-
       # Para cada 15 días, Dependabot no soporta "biweekly" directamente.
       # Puedes usar "cron" para lograrlo:
       interval: "cron"
