@@ -1,11 +1,11 @@
-import express, { Express, Request, Response } from "express";
+import cors from "cors";
+import express, { type Express, type Request, type Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import { corsOptions } from "@/config/Cors";
-import { RateLimit } from "@/utils/rateLimit";
 import swaggerSpec, { swaggerUIOptions } from "@/config/Swagger";
+import { RateLimit } from "@/utils/rateLimit";
 import { API_VERSION } from "./config/Process";
 import logger from "./utils/logger";
 
@@ -18,12 +18,12 @@ app.use(morgan("common")); // Middleware para registrar las solicitudes HTTP
 app.use(cors(corsOptions)); // Middleware para manejar CORS con opciones personalizadas
 
 // ruta para probar
-app.get("/", cors({ origin: true }), (req: Request, res: Response) => {
+app.get("/", cors({ origin: true }), (_req: Request, res: Response) => {
   res.send("Hello World!");
 });
 
 // Ruta de ejemplo para la API
-app.get(`/api/${API_VERSION}`, (req: Request, res: Response) => {
+app.get(`/api/${API_VERSION}`, (_req: Request, res: Response) => {
   res.json({ message: "API con express y typescript" });
 });
 //? las rutas de la API deberían estar bajo el prefijo /api/{API_VERSION}/ -> el donde apuntan
@@ -50,7 +50,7 @@ app.use((req: Request, res: Response) => {
 
 // Manejo de errores
 app.use((error: Error, req: Request, res: Response) => {
-  console.error(error.stack);
+  logger.error(error.stack ?? "Error desconocido");
   res.status(500).json({
     mensaje: "Algo salió mal en el servidor",
     success: false,
